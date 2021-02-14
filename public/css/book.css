@@ -1,0 +1,103 @@
+/* MyLibrary */
+.mylibrary_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.mylibrary_main p {
+  color: #202f55;
+  font-size: 1.4rem;
+  margin: 3rem 3rem 2rem;
+}
+.mylibrary_main a {
+  display: block;
+  width:180px;
+  height:50px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  background: #f16272;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin-left: 3rem;
+}
+.new_book {
+  margin: 3rem;
+}
+.new_book label {
+  font-size: 1.2rem;
+  color: #f16272;
+  margin-right: 2rem;
+} 
+.new_book input {
+  border-radius: 10px;
+  border: 1px solid #f16272;
+}
+.new_book .button {
+  background:  #f16272;
+  color: #fff;
+}
+
+/* record 本の登録 */
+.eye_catch {
+  text-align: center;
+}
+.eye_catch img {
+  margin: 3rem;
+  width: 40vw;
+}
+form {
+  width: 100%;
+  text-align: center;
+} 
+.form_item {
+  margin-bottom: 0.5em;
+}
+.form_item label {
+  width: 50%;
+  color: #757575;
+  display: block;
+  margin-left: 1rem;
+}
+.form_item input {
+  background: #fff;
+  border: none;
+  border-bottom: 2px solid #c4c4c4;
+  color: #000;
+  font-size: 1em;
+  transition: border-color 0.3s;
+  width: 50%;
+  height: 50px;
+}
+.form_item input:focus {
+  border-bottom: 2px solid #666;
+  outline: none;
+}
+textarea {
+  width:50%;
+  height: 30%;
+}
+.form_file {
+  margin-top: 2rem;
+  color: #757575;
+}
+.button_panel {
+  margin: 2em 0 0;
+  width: 100%;
+}
+.button_panel .button {
+  background: #202f55;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  height: 50px;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+  width: 180px;
+  height: 50px;
+  margin-bottom: 2rem;
+}
+.button:hover {
+  background: #7A819F;
+}

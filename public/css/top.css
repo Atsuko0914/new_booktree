@@ -1,0 +1,131 @@
+body {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+header {
+  padding: 0 4%;
+  height: 50px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* ヘッダーナビ */
+nav {
+  width: 35%;
+  display: flex;
+  text-align: center;
+}
+nav a {
+  padding-left: 50px;
+  font-size: 1.2rem;
+}
+a {
+  display: block;
+  color: #c4c4c4;
+}
+header > a {
+  font-size: 1.4rem;
+}
+/* 画像 */
+#home {
+  background-image: url(../images/main.jpg);
+  min-height: 100vh;
+}
+.main_img {
+  background-size: cover;
+  background-position: conter top;
+  background-repeat: no-repeat;
+}
+/* トップメッセージ */
+.top_message {
+  padding: 80px 80px 30px;
+}
+.top_message p {
+  color: #fff;
+  font-size: 1.2rem;
+}
+.top_message span {
+  color: #202f55;
+  font-size: 1.2rem;
+}
+
+/* フッター */
+footer {
+  height: 50px;
+  background-color: #c4c4c4;
+  position: relative;
+  
+}
+footer p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+/* ログイン */
+.top_login {
+  background: rgb(255, 255, 255, .5);
+  margin:0 auto;
+  padding: 0 1em;
+  max-width: 370px;
+  border-radius: 10px;
+}
+.top_login h1 {
+  color: #f16272;
+  text-align: center;
+  padding: 1rem 0 0;
+  font-size: 1.5rem;
+}
+form {
+  padding: 0 1.5em;
+}
+.form_item {
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+.form_item input {
+  background: #fff;
+  border: none;
+  border-bottom: 2px solid #c4c4c4;
+  color: #000;
+  font-size: 1em;
+  height: 50px;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+.form_item input:focus {
+  border-bottom: 2px solid #666;
+  outline: none;
+}
+.button_panel {
+  margin: 2em 0 0;
+  width: 100%;
+}
+.button_panel .button {
+  background: #f16272;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  height: 50px;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+.button:hover {
+  background: #ee3e52;
+}
+.form_footer {
+  font-size: 1em;
+  padding: 1em 0;
+  text-align: center;
+}
+.form_footer a {
+  color: #8c8c8c;
+}
+

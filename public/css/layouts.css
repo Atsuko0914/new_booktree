@@ -1,0 +1,46 @@
+body {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+header {
+  padding: 0 4%;
+  height: 50px;
+  background-color: #c4c4c4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav {
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+nav a {
+  padding-left: 50px;
+  font-size: 1.2rem;
+}
+header a {
+  display: block;
+  color: #fff;
+}
+header > a {
+  font-size: 1.4rem;
+  
+}
+/* フッター */
+footer {
+  height: 50px;
+  background-color: #c4c4c4;
+  position: relative;
+  
+}
+footer p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
