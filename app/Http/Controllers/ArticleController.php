@@ -13,10 +13,17 @@ class ArticleController extends Controller
         $this->authorizeResource(Article::class, 'article');
     }
     
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->search;
+       if ($search != '') {
+         $articles = Article::where('article_body', 'like', '%'.$search.'%')->get();
+       } else {
         $articles = Article::all()->sortByDesc('created_at');
+       }
+
         return view('articles.index', ['articles' => $articles]);
+   
     }
 
     public function create()
@@ -30,6 +37,8 @@ class ArticleController extends Controller
         $article->user_id = $request->user()->id;
         $article->save();
         return redirect()->route('articles.index');
+
+        
     }
 
     public function edit(Article $article)
@@ -52,6 +61,8 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         return view('articles.show', ['article' => $article]);
-    }    
+    }
+    
+    
 
 }
