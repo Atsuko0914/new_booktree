@@ -58,6 +58,9 @@
   <div class="card-body pt-0">
     <h3 class="h4 card-title">
       <a class="text-dark" href="{{ route('articles.show', ['article' => $article]) }}">
+        @if($article->article_image_path)
+        <img src="/storage/image/{{$article->article_image_path }}">
+        @endif
         {{ $article->article_body }}
       </a>
     </h3>

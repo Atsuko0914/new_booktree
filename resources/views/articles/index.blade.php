@@ -20,28 +20,6 @@
   </div>
 </div>
 
-<!-- モーダル  -->
-<div class="modal js-modal">
-  <div class="modal_bg js-modal-close"></div>
-  <div class="modal_content">
-    <div class="modal_nav">
-      <p>投稿を作成</p>
-      <a class="js-modal-close" href="">閉じる</a>
-    </div>
-    <form action="/admin/post/index" method="POST" enctype="multipart/form-data">
-    @csrf
-      <textarea name="post_body" id="post_body" ></textarea>
-      <div class="form_item">
-        <label for="post_image_pass">画像</label>
-        <input type="file" name="post_image_pass" id="post_image_pass"></input>
-      </div>
-      <div class="button_panel">
-        <input type="submit" class="button" value="投稿">
-      </div>    
-    </form>
-  </div><!--modal__content-->
-</div><!--modal-->
-
 
 @include('nav')
   <div class="container">

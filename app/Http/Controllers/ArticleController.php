@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image; // intervention/imageライブラリの読み込み
+use Illuminate\Support\Facades\Storage; // Storageファサードを使う(ユーザー画像を保存,削除)
+
+
 
 class ArticleController extends Controller
 {   
@@ -32,10 +36,45 @@ class ArticleController extends Controller
     }
 
     public function store(ArticleRequest $request, Article $article)
-    {
-        $article->fill($request->all());
+    {   
+        $form = $request->all();
+        
+
+        // フォームに画像があれば画像を保存する処理を行う
+        if (empty($form['article_image_path'])) {
+            $article->article_image_path = null;
+        } else {
+            // ファイルを取得
+            $posted_image = $request->file('article_image_path');
+    
+            // 画像をリサイズしてjpgにencodeする(InterventionImageのImageファサードを使用)
+            $resized_image = Image::make($posted_image)->resize(300, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode('jpg');
+            
+            // さらに自動回転を行う(ここでEXIFが削除される)
+            $resized_image->orientate()->save();
+            
+            // 加工した画像からhashを生成し、ファイル名を設定する
+            $image_hash = md5($resized_image->__toString());
+            $image_name = "{$image_hash}.jpg";
+
+            // 加工した画像を保存する
+            Storage::put('public/image/' . $image_name, $resized_image); 
+            
+            $article->article_image_path = $image_name;
+        }
+
+        // ログインユーザー情報を取得する
         $article->user_id = $request->user()->id;
+
+        // フォームから送信されてきたimageを削除
+        unset($form['article_image_path']);
+
+        // データベースに保存する
+        $article->fill($form);
         $article->save();
+
         return redirect()->route('articles.index');
 
         

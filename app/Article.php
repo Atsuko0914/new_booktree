@@ -9,6 +9,7 @@ class Article extends Model
 {
     protected $fillable = [
         'article_body',
+        'article_image_pasth',
     ];
 
     public function user(): BelongsTo
