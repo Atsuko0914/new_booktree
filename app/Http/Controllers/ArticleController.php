@@ -21,7 +21,7 @@ class ArticleController extends Controller
        } else {
         $articles = Article::all()->sortByDesc('created_at');
        }
-
+       
         return view('articles.index', ['articles' => $articles]);
    
     }

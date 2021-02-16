@@ -20,10 +20,10 @@
 <body>
 <header>
     <!-- サイトロゴ -->
-    <a href="{{url('/')}}">BookTree</a>  
+    <a href="{{route('articles.index')}}">BookTree</a>  
       <nav>
-        <a href="{{url('/articles/index')}}">みんなの投稿</a>
-        <a href="{{url('/book/index')}}">Mylibrary</a>
+        <a href="{{route('articles.index')}}">みんなの投稿</a>
+        <a href="{{route('books.index')}}">Mylibrary</a>
       </nav>
      
     <form id="logout-button" method="POST" action="{{ route('logout') }}">
