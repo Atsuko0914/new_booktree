@@ -12,10 +12,10 @@
 </div>
 <!-- 登録内容 -->
 @include('error_card_list')
-<form action="{{ route('books.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('books.store')}}" method="POST" enctype="multipart/form-data" class="new_book">
   @include('books.form')
   <div class="button_panel">
-    <input type="submit" class="button" value="確認"></input>
+    <input type="submit" class="button" value="登録する"></input>
   </div>
 </form>
 

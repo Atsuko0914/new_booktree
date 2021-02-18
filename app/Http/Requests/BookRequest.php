@@ -32,6 +32,7 @@ class BookRequest extends FormRequest
             'issue_date' => 'date',
             'keyword' => 'max:50',
             'summary' => 'max:500',
+            'book_image_path' => 'file|mimes:jpeg,png,jpg|max:2048',
 
         ];
     }
@@ -47,6 +48,7 @@ class BookRequest extends FormRequest
             'issue_date' => '発行日',
             'keyword' => 'キーワード',
             'summary' => '要約',
+            'book_image_path' => 'picture',
         ];
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image; // intervention/imageライブラリの読み込み
+use Intervention\Image\Facades\Image; // interventionimageを使う(画像のリサイズ)
 use Illuminate\Support\Facades\Storage; // Storageファサードを使う(ユーザー画像を保存,削除)
 
 
@@ -18,7 +18,8 @@ class ArticleController extends Controller
     }
     
     public function index(Request $request)
-    {
+    {   
+        // フォームに値があれば検索する
         $search = $request->search;
        if ($search != '') {
          $articles = Article::where('article_body', 'like', '%'.$search.'%')->get();
@@ -40,11 +41,11 @@ class ArticleController extends Controller
         $form = $request->all();
         
 
-        // フォームに画像があれば画像を保存する処理を行う
+        // フォームに画像があれば画像を保存する
         if (empty($form['article_image_path'])) {
             $article->article_image_path = null;
         } else {
-            // ファイルを取得
+            // ファイルを取得する
             $posted_image = $request->file('article_image_path');
     
             // 画像をリサイズしてjpgにencodeする(InterventionImageのImageファサードを使用)
@@ -52,7 +53,7 @@ class ArticleController extends Controller
                 $constraint->aspectRatio();
             })->encode('jpg');
             
-            // さらに自動回転を行う(ここでEXIFが削除される)
+            // 自動回転を行う(ここでEXIFが削除される)
             $resized_image->orientate()->save();
             
             // 加工した画像からhashを生成し、ファイル名を設定する

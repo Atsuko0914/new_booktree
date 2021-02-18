@@ -1,26 +1,25 @@
-<!-- <nav class="navbar navbar-expand navbar-dark blue-gradient">
+<!-- <nav class="navbar navbar-expand">
 
-  <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>memo</a>
+  <a class="navbar-brand" href="{{route('articles.index')}}><i class="far fa-sticky-note mr-1"></i>BookTree</a>
 
   <ul class="navbar-nav ml-auto">
 
-    @guest
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
+      <a class="nav-link" href="{{route('articles.index')}}">みんなの投稿</a>
     </li>
-    @endguest
 
-    @guest
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+      <a class="nav-link" href="{{route('books.index')}}">Mylibrary</a>
     </li>
-    @endguest
 
-    @auth
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
+      <form id="logout-button" method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button form="logout-button" type="submit">
+        ログアウト
+        </button>
+      </form>
     </li>
-    @endauth
 
     @auth
     <!-- Dropdown -->
@@ -49,3 +48,4 @@
   <!-- </ul>
 
 </nav> --> 
+

@@ -32,7 +32,7 @@ footer {
   position: relative;
   
 }
-footer p {
+footer > p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,7 +51,7 @@ footer p {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.new_login h1 {
+.new_login > h1 {
   color: #202f55;
   text-align: center;
   padding: 1em 0 0;

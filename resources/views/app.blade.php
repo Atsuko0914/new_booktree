@@ -13,6 +13,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+  <!-- css -->
+  <link rel="stylesheet" href="{{ asset('css/html5reset-1.6.1.css')}}">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
   <script src="{{ asset('js/app.js') }}"></script>
@@ -30,7 +32,7 @@
       @csrf
     <button form="logout-button" type="submit">
       ログアウト
-    </button>
+</button>
     </form>
     
   </header>

@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<div class="card mt-3" style="max-width: 15rem;">
   <div class="card-body d-flex flex-row">
   
   @if( Auth::id() === $book->user_id )  
@@ -46,13 +46,18 @@
       </div>
       <!-- modal -->
       @endif
+  </div>
 
-    </div>
+  @if($book->book_image_path)
+    <img class="card-img-top" src="/storage/image/{{$book->book_image_path }}" alt="本の画像">
+  @endif
   <div class="card-body pt-0">
-    <h3 class="h4 card-title">
-      <a class="text-dark" href="{{ route('books.show', ['book' => $book]) }}">
-        {{ $book->title }}
-      </a>
+    <h3 class="card-title">
+      {{ $book->title }}
     </h3>
+    <a class="text-dark" href="{{ route('books.show', ['book' => $book]) }}">
+    <small>詳細</small>
+    </a>
   </div>
 </div>
+

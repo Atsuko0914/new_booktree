@@ -1,6 +1,7 @@
 <link href="{{ asset('css/book.css') }}" rel="stylesheet">
 
 @csrf
+<div class="my_library_form">
   <div class="form_item">
     <label for="title">タイトル</label>
     <input type="text" name="title" id="title" required value="{{$book->title ?? old('title')}}"></input>
@@ -39,9 +40,10 @@
     <textarea name="summary" id="summary">{{$book->summary ?? old('summary')}}</textarea>
   </div>
   <div class="form_file">
-    <label for="book_image_pass">picture</label>
-    <input type="file" name="book_image_pass"></input>
+    <label for="book_image_path">picture</label>
+    <input type="file" name="book_image_path"></input>
   </div>
+</div>
 
 
 

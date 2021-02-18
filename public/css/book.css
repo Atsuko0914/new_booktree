@@ -3,6 +3,9 @@
   display: flex;
   justify-content: space-between;
 }
+.mylibrary_main {
+  display: flex;
+}
 .mylibrary_main p {
   color: #202f55;
   font-size: 1.4rem;
@@ -18,34 +21,38 @@
   background: #f16272;
   border-radius: 10px;
   font-size: 1.2rem;
-  margin-left: 3rem;
+  margin: 3rem 3rem 2rem;
 }
 .new_book {
-  margin: 3rem;
+  margin-top: 3rem;
 }
 .new_book label {
   font-size: 1.2rem;
   color: #f16272;
   margin-right: 2rem;
 } 
-.new_book input {
+#my_search {
   border-radius: 10px;
   border: 1px solid #f16272;
 }
 .new_book .button {
+  border: none;
   background:  #f16272;
   color: #fff;
+  border-radius: 10px;
 }
 
-/* record 本の登録 */
+
+/* form 本の登録 */
 .eye_catch {
   text-align: center;
 }
-.eye_catch img {
-  margin: 3rem;
+.eye_catch > img {
+  margin-top: 3rem;
   width: 40vw;
 }
-form {
+.my_library_form {
+  margin-top: 3rem;
   width: 100%;
   text-align: center;
 } 
@@ -83,6 +90,7 @@ textarea {
 .button_panel {
   margin: 2em 0 0;
   width: 100%;
+  text-align: center;
 }
 .button_panel .button {
   background: #202f55;
