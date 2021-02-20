@@ -15,6 +15,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
   <!-- css -->
   <link rel="stylesheet" href="{{ asset('css/html5reset-1.6.1.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
   <script src="{{ asset('js/app.js') }}"></script>
@@ -39,13 +40,13 @@
 
   <div id="app">
     @yield('content')
-  <div>
+  </div>
 
   <footer>
     <p><small>Powerd by Atsuko Tanaka</small></p>
   </footer>  
 
-  <script src="{{ mix('js/app.js')}}"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
