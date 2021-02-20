@@ -2,8 +2,6 @@
 
 @section('title', '記事更新')
 
-@include('nav')
-
 @section('content')
   @include('error_card_list')
     <div>

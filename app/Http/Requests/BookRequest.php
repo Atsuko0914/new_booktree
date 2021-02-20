@@ -26,13 +26,13 @@ class BookRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'author' => 'required|max:50',
-            'purchase_date' => 'date',
-            'price' => 'integer',
-            'publication' => 'max:50',
-            'issue_date' => 'date',
-            'keyword' => 'max:50',
-            'summary' => 'max:500',
-            'book_image_path' => 'file|mimes:jpeg,png,jpg|max:2048',
+            'purchase_date' => 'nullable|date',
+            'price' => 'nullable|integer',
+            'publication' => 'nullable|max:50',
+            'issue_date' => 'nullable|date',
+            'keyword' => 'nullable|max:50',
+            'summary' => 'nullable|max:500',
+            'book_image_path' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
 
         ];
     }

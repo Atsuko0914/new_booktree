@@ -25,7 +25,7 @@ class ArticleRequest extends FormRequest
     {
         return [
             'article_body' => 'required|max:500',
-            'book_image_path' => 'file|mimes:jpeg,png,jpg|max:2048',
+            'article_image_path' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
         ];
     }
     public function attributes()

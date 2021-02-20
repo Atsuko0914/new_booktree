@@ -18,5 +18,4 @@
     <input type="submit" class="button" value="登録する"></input>
   </div>
 </form>
-
 @endsection

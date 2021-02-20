@@ -45,7 +45,7 @@
               </div>
               <div class="modal-footer justify-content-between">
                 <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
-                <button type="submit" class="btn btn-danger">削除する</button>
+                <button type="submit" class="btn btn-danger h-50">削除する</button>
               </div>
             </form>
           </div>
@@ -58,11 +58,26 @@
   <div class="card-body pt-0">
     <h3 class="h4 card-title">
       <a class="text-dark" href="{{ route('articles.show', ['article' => $article]) }}">
-        @if($article->article_image_path)
-        <img src="/storage/image/{{$article->article_image_path }}">
-        @endif
-        {{ $article->article_body }}
+        {{$article->article_body}}
       </a>
     </h3>
+    <div class="card-text">
+    @if($article->article_image_path)
+        <img src="/storage/image/{{$article->article_image_path }}">
+        @endif
+    </div>
+  </div>
+  <div class="card-body pt-0 pb-2 pl-3">
+    <div class="card-text">
+      <article-like 
+      :initial-is-liked-by='@json($article->isLikedBy(Auth::user()))'
+      :initial-count-likes='@json($article->count_likes)'
+      :authorized='@json(Auth::check())'
+      endpoint="{{ route('articles.like', ['article' => $article]) }}"
+      >
+      </article-like>
+    </div>
   </div>
 </div>
+
+

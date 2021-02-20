@@ -15,3 +15,7 @@ Route::get('/', 'Auth\LoginController@getLogin')->name('auth.login');
 Route::get('articles/index', 'ArticleController@index')->name('articles.index');
 Route::resource('/articles', 'ArticleController')->except(['auth.login'])->middleware('auth');
 Route::resource('/books', 'BookController')->except(['auth.login'])->middleware('auth');
+Route::prefix('articles')->name('articles.')->group(function () {
+  Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
+  Route::delete('/{article}/like', 'ArticleController@unlike')->name('unlike')->middleware('auth');
+});

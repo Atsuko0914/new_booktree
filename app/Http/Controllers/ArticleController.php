@@ -19,7 +19,7 @@ class ArticleController extends Controller
     
     public function index(Request $request)
     {   
-        // フォームに値があれば検索する
+        // 一致するものがあるか検索する
         $search = $request->search;
        if ($search != '') {
          $articles = Article::where('article_body', 'like', '%'.$search.'%')->get();
@@ -53,7 +53,7 @@ class ArticleController extends Controller
                 $constraint->aspectRatio();
             })->encode('jpg');
             
-            // 自動回転を行う(ここでEXIFが削除される)
+            // さらに自動回転を行う(ここでEXIFが削除される)
             $resized_image->orientate()->save();
             
             // 加工した画像からhashを生成し、ファイル名を設定する
@@ -87,7 +87,8 @@ class ArticleController extends Controller
     }
 
     public function update(ArticleRequest $request, Article $article)
-    {
+    {   
+        
         $article->fill($request->all())->save();
         return redirect()->route('articles.index');
     }
@@ -100,9 +101,29 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
-        return view('articles.show', ['article' => $article]);
+        return view('articles.show', ['article' => $article]); 
     }
     
+    public function like(Request $request, Article $article)
+    {
+        $article->likes()->detach($request->user()->id);
+        $article->likes()->attach($request->user()->id);
+
+        return [
+            'id' => $article->id,
+            'countLikes' => $article->count_likes,
+        ];
+    }
+
+    public function unlike(Request $request, Article $article)
+    {
+        $article->likes()->detach($request->user()->id);
+
+        return [
+            'id' => $article->id,
+            'countLikes' => $article->count_likes,
+        ];
+    }
     
 
 }
