@@ -1,0 +1,47 @@
+/* みんなの投稿 */
+.index_main {
+  display: flex;
+  justify-content: space-between;
+}
+.index_main p {
+  color: #202f55;
+  font-size: 1.4em;
+  margin: 3rem;
+
+}
+.article_search {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  margin: 3rem;
+}
+.article_search a {
+  display: block;
+  width:180px;
+  height:50px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  background: #f16272;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin-right: 2rem;
+}
+.keyword_inner{
+  display: flex;
+}
+.keyword_search label {
+  display: block;
+  color: #f16272;
+  font-size: 0.8em;
+} 
+.keyword_search input {
+  border-radius: 10px; 
+  border: 1px solid #f16272;
+  margin-left: 2px;
+}
+.keyword_search .button {
+  background:  #f16272;
+  color: #fff;
+}
+
