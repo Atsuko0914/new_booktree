@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Bootstrap core CSS -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
   <!-- css -->
   <link rel="stylesheet" href="{{ asset('css/html5reset-1.6.1.css')}}">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -13,7 +17,7 @@
   <title>@yield('title')</title>
 </head>
 <body>
-<header>
+  <header>
 <!-- サイトロゴ -->
     <a href="{{url('/')}}">BookTree</a> 
 <!-- ナビゲーション -->
@@ -29,38 +33,9 @@
       <p>よりよい<span>読書LIFEを。。。</span></p>
     </div>
     @yield('login')
-    <!-- <div class="top_login">
-      <h1>BookTreeにログイン</h1>
-      <form>
-        <div class="form_item">
-          <label for="email"></label>
-          <input type="email" name="email" placeholder="Email Address"></input>
-        </div>
-        <div class="form_item">
-          <label for="password"></label>
-          <input type="password" name="password"
-          placeholder="Password"></input>
-        </div>
-        <div class="button_panel">
-          <input type="submit" class="button" value="ログイン"></input>
-        </div>
-      </form>
-        <div class="form_footer">
-          <p><a href="#">パスワードをお忘れの方</a></p>
-        </div>
-    </div> -->
-      
-    
   </div>
-
-
   <footer>
     <p><small>Powerd by Atsuko Tanaka</small></p>
   </footer>  
-
-
-  
-
-
 </body>
 </html>

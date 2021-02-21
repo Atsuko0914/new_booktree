@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts/app')
 
 @section('title', '本の登録')
 <link href="{{ asset('css/book.css') }}" rel="stylesheet">

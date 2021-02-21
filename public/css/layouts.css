@@ -2,6 +2,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   max-width: 1152px;
   margin: 0 auto;
+  font-size: 1.2rem;
 }
 
 /* ヘッダー */
@@ -20,20 +21,19 @@ nav {
 }
 nav > a {
   padding-left: 50px;
-  font-size: 1.2rem;
-}
-header a {
   display: block;
   color: #fff;
 }
-header a {
-  font-size: 1.4rem;
+header > a {
+  display: block;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.6em;
 }
 button {
   border: none;
   color: #fff;
   background-color: #c4c4c4;
-  font-size: 1.4rem;
   margin-right: 20px;
   height: 30px;
 }
@@ -51,6 +51,7 @@ footer > p {
   margin-right: -50%;
   transform: translate(-50%, -50%);
   color: #fff;
+  font-size: 0.8em;
 }
 
 /* ボタン create edit*/
@@ -63,7 +64,6 @@ footer > p {
   color: #fff;
   background: #f16272;
   border-radius: 10px;
-  font-size: 1.2rem;
   margin: 3rem auto;
 }
 

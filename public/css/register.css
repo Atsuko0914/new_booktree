@@ -1,6 +1,8 @@
 body {
+  font-family: 'Quicksand', sans-serif;
   max-width: 1152px;
   margin: 0 auto;
+  font-size: 1.2rem;
 }
 
 /* ヘッダー */
@@ -11,10 +13,13 @@ header {
   display: flex;
   align-items: center;
 }
-header > a {
-    display: block;
+header a {
     color: #c4c4c4;
-    font-size: 1.4rem;
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+  a:hover {
+    color: #202f55;
   }
 /* 画像 */
 #home {
@@ -32,12 +37,13 @@ footer {
   position: relative;
   
 }
-footer > p {
+footer p {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
+  font-size: 0.8em;
 }
 /* ログイン */
 .new_login {
@@ -51,10 +57,11 @@ footer > p {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.new_login > h1 {
+.new_login h1 {
   color: #202f55;
   text-align: center;
   padding: 1em 0 0;
+  font-size: 1.2em;
 }
 form {
   padding: 0 1.5em;
@@ -68,7 +75,7 @@ form {
   border: none;
   border-bottom: 2px solid #c4c4c4;
   color: #000;
-  font-size: 1em;
+  font-size: 0.8em;
   height: 50px;
   transition: border-color 0.3s;
   width: 100%;
@@ -78,9 +85,11 @@ form {
   outline: none;
 }
 .form_file {
-  margin-top: 2rem;
+  margin-top: 1em;
   color: #757575;
+  font-size: 0.8em;
 }
+
 .button_panel {
   margin: 2em 0 0;
   width: 100%;
@@ -91,7 +100,7 @@ form {
   border-radius: 10px;
   color: #fff;
   height: 50px;
-  font-size: 1.2em;
+  font-size: 1em;
   letter-spacing: 0.05em;
   text-align: center;
   transition: background 0.3s ease-in-out;

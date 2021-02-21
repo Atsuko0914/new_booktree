@@ -1,6 +1,7 @@
 @extends('top')
 
 @section('login')
+@section('title', 'ログイン')
 
 @include('error_card_list')
 <div class="top_login">
@@ -30,7 +31,5 @@
         </div>
 
       </form>
-
-        
-    </div>
+</div>
   @endsection

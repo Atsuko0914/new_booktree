@@ -3,10 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title')</title>
+   <!-- Bootstrap core CSS -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+  <!-- css -->
+  <link rel="stylesheet" href="{{ asset('css/html5reset-1.6.1.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/register.css') }}" rel="stylesheet">
   <script src="{{ asset('js/validation.js') }}"></script>
+  <title>新規登録</title>
 </head>
 <body>
 <!-- サイトロゴ -->
@@ -57,8 +64,9 @@
         </div>
       </form>
     </div>
-    
-    
   </div>
+  <footer>
+      <p><small>Powerd by Atsuko Tanaka</small></p>
+  </footer>
   
   

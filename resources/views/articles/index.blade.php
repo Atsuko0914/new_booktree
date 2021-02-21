@@ -1,21 +1,22 @@
-@extends('app')
+@extends('layouts/app')
 
 @section('title', 'みんなの投稿')
-<link href="{{ asset('css/admin.css') }}" rel="stylesheet">
-<link href="{{ asset('css/modal.css') }}" rel="stylesheet">
+<link href="{{ asset('css/article.css') }}" rel="stylesheet">
 
 <!-- ここからコンテンツ -->
 @section('content')
 <div class="index_main">
   <p>みんなの投稿</p>
   <!-- 投稿作成ボタン -->
-  <div class="post_serch">
-    <a class="js-modal-open"  href="{{ route('articles.create') }}">＋新しい投稿</a>
+  <div class="article_search">
+    <a href="{{ route('articles.create') }}">＋新しい投稿</a>
     <!-- 投稿の検索 -->
-    <form class="keyword_serch">
+    <form class="keyword_search">
         <label for="search">キーワードで投稿を検索</label>
-        <input type="text" name="search" id="search" value="{{request('search')}}">
-        <input type="submit" class="button" value="検索" ></input>
+        <div class="keyword_inner">
+          <input type="text" name="search" id="search" value="{{request('search')}}">
+          <input type="submit" class="button" value="検索" ></input>
+      </div>
     </form>
   </div>
 </div>

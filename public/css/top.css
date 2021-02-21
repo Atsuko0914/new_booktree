@@ -2,6 +2,8 @@ body {
   font-family: 'Quicksand', sans-serif;
   max-width: 1152px;
   margin: 0 auto;
+  line-height: 1.7rem;
+  font-size: 1.2rem;
 }
 
 /* ヘッダー */
@@ -21,14 +23,17 @@ nav {
 }
 nav a {
   padding-left: 50px;
-  font-size: 1.2rem;
 }
 a {
   display: block;
   color: #c4c4c4;
 }
+a:hover {
+  color: #202f55;
+}
 header > a {
-  font-size: 1.4rem;
+  font-weight: bold;
+  font-size: 1.6em;
 }
 /* 画像 */
 #home {
@@ -46,11 +51,9 @@ header > a {
 }
 .top_message p {
   color: #fff;
-  font-size: 1.2rem;
 }
 .top_message span {
   color: #202f55;
-  font-size: 1.2rem;
 }
 
 /* フッター */
@@ -58,7 +61,6 @@ footer {
   height: 50px;
   background-color: #c4c4c4;
   position: relative;
-  
 }
 footer p {
   position: absolute;
@@ -66,20 +68,23 @@ footer p {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
+  font-size: 0.8em;
 }
+
 /* ログイン */
 .top_login {
   background: rgb(255, 255, 255, .5);
   margin:0 auto;
-  padding: 0 1em;
+  padding: 1em;
   max-width: 370px;
   border-radius: 10px;
 }
 .top_login h1 {
   color: #f16272;
   text-align: center;
-  padding: 1rem 0 0;
-  font-size: 1.5rem;
+  margin: 1em;
+  font-weight: normal;
+  font-size: 1.2em;
 }
 form {
   padding: 0 1.5em;
@@ -93,7 +98,7 @@ form {
   border: none;
   border-bottom: 2px solid #c4c4c4;
   color: #000;
-  font-size: 1em;
+  font-size: 0.8em;
   height: 50px;
   transition: border-color 0.3s;
   width: 100%;
@@ -112,21 +117,22 @@ form {
   border-radius: 10px;
   color: #fff;
   height: 50px;
-  font-size: 1.2em;
   letter-spacing: 0.05em;
   text-align: center;
   transition: background 0.3s ease-in-out;
   width: 100%;
+  font-size: 1em;
 }
 .button:hover {
   background: #ee3e52;
 }
 .form_footer {
-  font-size: 1em;
   padding: 1em 0;
   text-align: center;
 }
 .form_footer a {
   color: #8c8c8c;
+  font-size: 0.8em;
+  text-decoration: none;
 }
 
