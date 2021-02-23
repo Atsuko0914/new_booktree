@@ -14,12 +14,12 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-nav {
+.main_nav {
   width: 60%;
   display: flex;
   align-items: center;
 }
-nav > a {
+.main_nav > a {
   padding-left: 50px;
   display: block;
   color: #fff;

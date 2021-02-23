@@ -20,26 +20,33 @@
   color: #fff;
   background: #f16272;
   border-radius: 10px;
-  font-size: 1.2rem;
-  margin: 3rem 3rem 2rem;
+  margin: 2em 3em 2em;
 }
-.new_book {
-  margin-top: 3rem;
+.my_search {
+  margin-top: 2em;
+  display: flex;
 }
-.new_book label {
-  font-size: 1.2rem;
+.my_search label {
   color: #f16272;
-  margin-right: 2rem;
+  margin-right: 1em;
 } 
+.my_search_inner {
+  display: flex;
+}
 #my_search {
   border-radius: 10px;
   border: 1px solid #f16272;
+  width: 190px;
+  height: 30px;
 }
-.new_book .button {
+.my_button {
   border: none;
   background:  #f16272;
   color: #fff;
   border-radius: 10px;
+  width: 50px;
+  height: 30px;
+
 }
 
 
@@ -48,11 +55,11 @@
   text-align: center;
 }
 .eye_catch > img {
-  margin-top: 3rem;
+  margin-top: 3em;
   width: 40vw;
 }
 .my_library_form {
-  margin-top: 3rem;
+  margin-top: 3em;
   width: 100%;
   text-align: center;
 } 
@@ -84,7 +91,7 @@ textarea {
   height: 30%;
 }
 .form_file {
-  margin-top: 2rem;
+  margin-top: 2em;
   color: #757575;
 }
 .button_panel {
@@ -104,7 +111,7 @@ textarea {
   transition: background 0.3s ease-in-out;
   width: 180px;
   height: 50px;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
 }
 .button:hover {
   background: #7A819F;

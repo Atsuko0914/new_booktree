@@ -25,14 +25,14 @@ class ArticleRequest extends FormRequest
     {
         return [
             'article_body' => 'required|max:500',
-            'article_image_path' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
+            'article_image_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
     public function attributes()
     {
         return [
             'article_body' => '本文',
-            'book_image_path' => 'picture',
+            'article_image_path' => 'picture',
         ];
     }
 }

@@ -32,7 +32,7 @@ class BookRequest extends FormRequest
             'issue_date' => 'nullable|date',
             'keyword' => 'nullable|max:50',
             'summary' => 'nullable|max:500',
-            'book_image_path' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
+            'book_image_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
 
         ];
     }

@@ -24,8 +24,7 @@
   color: #fff;
   background: #f16272;
   border-radius: 10px;
-  font-size: 1.2rem;
-  margin-right: 2rem;
+  margin-right: 2em;
 }
 .keyword_inner{
   display: flex;
@@ -40,8 +39,14 @@
   border: 1px solid #f16272;
   margin-left: 2px;
 }
-.keyword_search .button {
+.keyword_inner > .button {
   background:  #f16272;
   color: #fff;
 }
-
+/* ページネーション */
+.pagenation {
+  display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}

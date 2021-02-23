@@ -24,7 +24,7 @@ class ArticleController extends Controller
        if ($search != '') {
          $articles = Article::where('article_body', 'like', '%'.$search.'%')->get();
        } else {
-        $articles = Article::all()->sortByDesc('created_at');
+        $articles = Article::orderBy('created_at', 'Desc')->paginate(5);
        }
        
         return view('articles.index', ['articles' => $articles]);
@@ -40,45 +40,23 @@ class ArticleController extends Controller
     {   
         $form = $request->all();
         
-
         // フォームに画像があれば画像を保存する
         if (empty($form['article_image_path'])) {
             $article->article_image_path = null;
         } else {
-            // ファイルを取得する
-            $posted_image = $request->file('article_image_path');
-    
-            // 画像をリサイズしてjpgにencodeする(InterventionImageのImageファサードを使用)
-            $resized_image = Image::make($posted_image)->resize(300, 300, function ($constraint) {
-                $constraint->aspectRatio();
-            })->encode('jpg');
-            
-            // さらに自動回転を行う(ここでEXIFが削除される)
-            $resized_image->orientate()->save();
-            
-            // 加工した画像からhashを生成し、ファイル名を設定する
-            $image_hash = md5($resized_image->__toString());
-            $image_name = "{$image_hash}.jpg";
-
-            // 加工した画像を保存する
-            Storage::put('public/image/' . $image_name, $resized_image); 
-            
-            $article->article_image_path = $image_name;
+            $article->article_image_path = $this->getPicture($request);
         }
-
-        // ログインユーザー情報を取得する
-        $article->user_id = $request->user()->id;
 
         // フォームから送信されてきたimageを削除
         unset($form['article_image_path']);
 
         // データベースに保存する
         $article->fill($form);
+        // ログインユーザー情報を取得する
+        $article->user_id = $request->user()->id;
         $article->save();
 
         return redirect()->route('articles.index');
-
-        
     }
 
     public function edit(Article $article)
@@ -88,8 +66,20 @@ class ArticleController extends Controller
 
     public function update(ArticleRequest $request, Article $article)
     {   
+        $form = $request->all();
         
-        $article->fill($request->all())->save();
+        // フォームに画像があれば画像を保存する
+        if (empty($form['article_image_path'])) {
+            $article->article_image_path = null;
+        } else {
+            $article->article_image_path = $this->getPicture($request);
+        }
+
+        // フォームから送信されてきたimageを削除
+        unset($form['article_image_path']);
+
+        $article->fill($form);
+        $article->save();
         return redirect()->route('articles.index');
     }
 
@@ -124,6 +114,33 @@ class ArticleController extends Controller
             'countLikes' => $article->count_likes,
         ];
     }
+
+     // 画像アップロードの関数
+     public function getPicture($request)
+     {
+         // ファイルを取得する
+         $posted_image = $request->file('article_image_path');
+ 
+         // 画像をリサイズしてjpgにencodeする
+         // (InterventionImageのImageファサードを使用)
+         $resized_image = Image::make($posted_image)->resize(300,300, function ($constraint) {
+             $constraint->aspectRatio();
+         })->encode('jpg');
+ 
+         // 自動回転を行う(ここでEXIFが削除される)
+         $resized_image->orientate()->save();
+ 
+         // 加工した画像からhashを生成し、ファイル名を設定する
+         $image_hash = md5($resized_image->__toString());
+         $image_name = "{$image_hash}.jpg";
+         
+ 
+         // 加工した画像を保存する
+         Storage::put('public/image/' . $image_name, $resized_image);
+ 
+         return $image_name;
+ 
+     } 
     
 
 }

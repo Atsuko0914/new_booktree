@@ -24,7 +24,7 @@
 <header>
     <!-- サイトロゴ -->
     <a href="{{route('articles.index')}}">BookTree</a>  
-      <nav>
+      <nav class="main_nav">
         <a href="{{route('articles.index')}}">みんなの投稿</a>
         <a href="{{route('books.index')}}">Mylibrary</a>
       </nav>

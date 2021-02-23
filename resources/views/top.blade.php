@@ -23,7 +23,7 @@
 <!-- ナビゲーション -->
       <nav>
         <a href="{{ route('register')}}">新規登録</a>
-        <a href="">ゲストログイン</a>
+        <a href="{{ route('login.guest') }}">ゲストログイン</a>
       </nav>
   </header>
   <div id="home" class="main_img">

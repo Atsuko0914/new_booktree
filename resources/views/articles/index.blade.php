@@ -21,11 +21,14 @@
   </div>
 </div>
 
-
-@include('nav')
   <div class="container">
     @foreach($articles as $article) 
       @include('articles.card')
     @endforeach
   </div>
+  <div class="d-flex justify-content-center">
+    {{ $articles->links('vendor.pagination.sample-pagination') }}
+  </div>
+    
+  
 @endsection
