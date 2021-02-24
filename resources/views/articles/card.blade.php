@@ -1,6 +1,9 @@
 <div class="card mt-3">
   <div class="card-body d-flex flex-row">
-  <img src="../images/temp1.png" class="img-circle float-left" width="50" height="50">
+  @if($article->user->user_image_path)
+        <img src="/storage/image/{{$article->user->user_image_path }}" class="img-circle float-left" width="50" height="50">
+    @endif
+  <!-- <img src="../images/temp1.png" class="img-circle float-left" width="50" height="50"> -->
 
     <!-- <i class="fas fa-user-circle fa-3x mr-1"></i> -->
     <div>
@@ -64,7 +67,7 @@
     <div class="card-text">
     @if($article->article_image_path)
         <img src="/storage/image/{{$article->article_image_path }}">
-        @endif
+    @endif
     </div>
   </div>
   <div class="card-body pt-0 pb-2 pl-3">

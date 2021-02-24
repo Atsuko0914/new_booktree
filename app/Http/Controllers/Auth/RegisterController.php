@@ -67,7 +67,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
-        if(empty($data['book_image_path']))
+        if(empty($data['user_image_path']))
         {
             $data['user_image_path'] = null;
         } else {
