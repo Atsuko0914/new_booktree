@@ -65,46 +65,47 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data, Request $request)
+    protected function create(array $data)
     {   
-        $form = $request->all();
-
-        // フォームに画像があれば画像を保存する
-        if (empty($form['user_image_path'])) {
-            $user->user_image_path = null;
+        if(empty($data['book_image_path']))
+        {
+            $data['user_image_path'] = null;
         } else {
-            // ファイルを取得する
-         $posted_image = $request->file('user_image_path');
- 
-         // 画像をリサイズしてjpgにencodeする
-         // (InterventionImageのImageファサードを使用)
-         $resized_image = Image::make($posted_image)->resize(300,300, function ($constraint) {
-             $constraint->aspectRatio();
-         })->encode('jpg');
- 
-         // 自動回転を行う(ここでEXIFが削除される)
-         $resized_image->orientate()->save();
- 
-         // 加工した画像からhashを生成し、ファイル名を設定する
-         $image_hash = md5($resized_image->__toString());
-         $image_name = "{$image_hash}.jpg";
-         
- 
-         // 加工した画像を保存する
-         Storage::put('public/image/' . $image_name, $resized_image);
- 
-        }
-
-        // フォームから送信されてきたimageを削除
-        unset($form['user_image_path']);
-
         
+            // ファイルを取得する
+        $posted_image = $data['user_image_path'];
+
+        // 画像をリサイズしてjpgにencodeする
+        // (InterventionImageのImageファサードを使用)
+        $resized_image = Image::make($posted_image)->resize(300,300, function ($constraint) {
+            $constraint->aspectRatio();
+        })->encode('jpg');
+
+        // 自動回転を行う(ここでEXIFが削除される)
+        $resized_image->orientate()->save();
+
+        // 加工した画像からhashを生成し、ファイル名を設定する
+        $image_hash = md5($resized_image->__toString());
+        $image_name = "{$image_hash}.jpg";
+        
+
+        // 加工した画像を保存する
+        Storage::put('public/image/' . $image_name, $resized_image);
+
+        $data['user_image_path'] = $image_name;
+    }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'user_image_path'=> $data['image_name'],
+            'user_image_path'=> $data['user_image_path'],
             'password' => Hash::make($data['password']
         ),
         ]);
+         
+
+        $user->save();
+        return $user;
+
     }
 }

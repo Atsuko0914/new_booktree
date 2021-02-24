@@ -44,7 +44,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
     
-    private const GUEST_USER_ID = 16;
+    private const GUEST_USER_ID = 22;
 
     // ゲストログイン処理
      public function guestLogin()
