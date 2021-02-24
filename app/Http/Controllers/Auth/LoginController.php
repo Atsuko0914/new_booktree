@@ -44,14 +44,14 @@ class LoginController extends Controller
         return view('auth.login');
     }
     
-    private const GUEST_USER_ID = 1;
+    private const GUEST_USER_ID = 16;
 
     // ゲストログイン処理
      public function guestLogin()
     {
         // id=1 のゲストユーザー情報がDBに存在すれば、ゲストログインする
         if (Auth::loginUsingId(self::GUEST_USER_ID)) {
-            return redirect('articles.index');
+            return redirect('articles/index');
         }
 
         return redirect('/');

@@ -55,8 +55,8 @@
         </div>
 
         <div class="form_file">
-          <label for="user_image_pass">picture</label>
-          <input type="file" name="user_image_pass" id="user_image_pass" onchange="CheckImage"></input>
+          <label for="user_image_path">picture</label>
+          <input type="file" name="user_image_path" id="user_image_path" onchange="CheckImage"></input>
         </div>
         
         <div class="button_panel">

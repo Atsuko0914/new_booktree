@@ -8,28 +8,31 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image; // interventionimageを使う(画像のリサイズ)
 use Illuminate\Support\Facades\Storage; // Storageファサードを使う(ユーザー画像を保存,削除)
 use App\Library\BaseClass; //共通関数を呼び出す
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, Book $book)
     {   
-        // フォームに値があれば検索する
-        $my_search = $request->my_search;
-        $select_box = $request->select_box;
+ // フォームに値があれば検索する
+ $my_search = $request->my_search;
+ $select_box = $request->select_box;
 
-        if($my_search != '') {
-            if($select_box === 'タイトル') {
-                $books = Book::where('title', 'like', '%'.$my_search.'%')->get();
-            } elseif($select_box === '著者') {
-                $books = Book::where('author', 'like', '%'.$my_search.'%')->get();
-            } elseif($select_box === 'キーワード') {
-                $books = Book::where('keyword', 'like', '%'.$my_search.'%')->get();
-            } 
-        } else {
-            $books = Book::orderBy('created_at', 'Desc')->paginate(5);
+ if($my_search != '') {
+     if($select_box === 'タイトル') {
+         $books = Book::where('title', 'like', '%'.$my_search.'%')->get();
+     } elseif($select_box === '著者') {
+         $books = Book::where('author', 'like', '%'.$my_search.'%')->get();
+     } elseif($select_box === 'キーワード') {
+         $books = Book::where('keyword', 'like', '%'.$my_search.'%')->get();
+     } 
+ } else {
+     $books = Book::orderBy('created_at', 'Desc')->paginate(5);
+ }
+ return view('books.index', ['books' => $books]);
         }
-        return view('books.index', ['books' => $books]);
-    }
+       
+
 
     public function create() {
         return view('books.create');

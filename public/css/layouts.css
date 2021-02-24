@@ -15,7 +15,7 @@ header {
   align-items: center;
 }
 .main_nav {
-  width: 60%;
+  width: 50%;
   display: flex;
   align-items: center;
 }
@@ -29,6 +29,9 @@ header > a {
   color: #fff;
   font-weight: bold;
   font-size: 1.6em;
+}
+.welcome_name {
+  color: #fff;
 }
 button {
   border: none;

@@ -22,19 +22,48 @@
 </head>
 <body>
 <header>
-    <!-- サイトロゴ -->
-    <a href="{{route('articles.index')}}">BookTree</a>  
-      <nav class="main_nav">
-        <a href="{{route('articles.index')}}">みんなの投稿</a>
-        <a href="{{route('books.index')}}">Mylibrary</a>
-      </nav>
-     
+  <!-- サイトロゴ -->
+  <a href="{{route('articles.index')}}">BookTree</a>  
+    <nav class="main_nav">
+      <a href="{{route('articles.index')}}">みんなの投稿</a>
+      <a href="{{route('books.index')}}">Mylibrary</a>
+    </nav>
+  <!-- @if(Auth::check())
+    <span class="welcome_name">ようこそ, {{ Auth::user()->name }}さん</span>
+  @endif -->
+
+  <!-- dropdown -->
+
+<div class="ml-auto card-text">
+  <div class="dropdown">
+    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    @if(Auth::check())
+      <span class="welcome_name">ようこそ, {{ Auth::user()->name }}さん</span>
+    @endif
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" href="{{ url('/user/index') }}">
+        マイページ
+      </a>
+    </div>
+  </div>
+</div>
+
+    <!-- dropdown -->
+
     <form id="logout-button" method="POST" action="{{ route('logout') }}">
+      @csrf
+      <button form="logout-button" type="submit">
+        ログアウト
+      </button>
+    </form>
+  
+     
+    <!-- <form id="logout-button" method="POST" action="{{ route('logout') }}">
       @csrf
     <button form="logout-button" type="submit">
       ログアウト
 </button>
-    </form>
+    </form> -->
     
   </header>
 

@@ -8,6 +8,9 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image; // interventionimageを使う(画像のリサイズ)
+use Illuminate\Support\Facades\Storage; // Storageファサードを使う(ユーザー画像を保存,削除)
 
 class RegisterController extends Controller
 {
@@ -62,13 +65,44 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data, Request $request)
     {   
+        $form = $request->all();
 
+        // フォームに画像があれば画像を保存する
+        if (empty($form['user_image_path'])) {
+            $user->user_image_path = null;
+        } else {
+            // ファイルを取得する
+         $posted_image = $request->file('user_image_path');
+ 
+         // 画像をリサイズしてjpgにencodeする
+         // (InterventionImageのImageファサードを使用)
+         $resized_image = Image::make($posted_image)->resize(300,300, function ($constraint) {
+             $constraint->aspectRatio();
+         })->encode('jpg');
+ 
+         // 自動回転を行う(ここでEXIFが削除される)
+         $resized_image->orientate()->save();
+ 
+         // 加工した画像からhashを生成し、ファイル名を設定する
+         $image_hash = md5($resized_image->__toString());
+         $image_name = "{$image_hash}.jpg";
+         
+ 
+         // 加工した画像を保存する
+         Storage::put('public/image/' . $image_name, $resized_image);
+ 
+        }
+
+        // フォームから送信されてきたimageを削除
+        unset($form['user_image_path']);
+
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'user_image_path' => $data['user_image_path'],
+            'user_image_path'=> $data['image_name'],
             'password' => Hash::make($data['password']
         ),
         ]);
