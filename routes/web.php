@@ -21,7 +21,8 @@ Route::prefix('articles')->name('articles.')->group(function () {
   Route::delete('/{article}/like', 'ArticleController@unlike')->name('unlike')->middleware('auth');
 });
 Route::resource('/books', 'BookController')->except(['auth.login'])->middleware('auth');
+
 // マイページ
 Route::get('/user/index', 'UserController@index')->name('user.index')->middleware('auth');
-Route::get('/user/userEdit', 'UserController@userEdit')->name('user.userEdit')->middleware('auth');
-Route::post('/user/userEdit', 'UserController@userUpdate')->name('user.userUpdate')->middleware('auth');
+Route::get('/user/{authUser}/userEdit', 'UserController@userEdit')->name('user.userEdit')->middleware('auth');
+Route::patch('/user/userEdit', 'UserController@userUpdate')->name('user.userUpdate')->middleware('auth');

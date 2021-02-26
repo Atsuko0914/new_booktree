@@ -3,39 +3,37 @@
 
 @section('content')
 <div class="container">
-    @if (session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+    <!-- @if (session('success'))
+    <div class="alert alert-danger">{{ session('success') }}</div>
+    @endif -->
 
-    <div class="topWrapper">
-        @if(!empty($authUser->thumbnail))
-            <img src="/storage/user/{{ $authUser->thumbnail }}" class="editThumbnail">
+    <div class="top_wrapper">
+        @if(!empty($authUser->user_image_path))
+            <img src="/storage/image/{{ $authUser->user_image_path }}" class="edit_image">
         @else
         画像なし
         @endif
     </div>
-
+    @include('error_card_list')
     <form method="post" action="{{ route('user.userUpdate') }}" enctype="multipart/form-data">
-        {{ csrf_field() }}
+        @method('PATCH')
+        @csrf
 
         <input type="hidden" name="user_id" value="{{ $authUser->id }}">
-        @if($errors->has('user_id'))<div class="error">{{ $errors->first('user_id') }}</div>@endif
 
-        <div class="labelTitle">Name</div>
+        <div class="label_title">name</div>
         <div>
-            <input type="text" class="userForm" name="name" placeholder="User" value="{{ $authUser->name }}">
-            @if($errors->has('name'))<div class="error">{{ $errors->first('name') }}</div>@endif
+            <input type="text" class="user_form" name="name" required value="{{ $authUser->name }}">
         </div>
 
-        <div class="labelTitle">Thumbnail</div>
+        <div class="label_title">picture</div>
 
         <div>
-            <input type="file" name="thumbnail">
+            <input type="file" name="user_image_path">
         </div>
 
-        <div class="buttonSet">
-            <input type="submit" name="send" value="ユーザー変更" class="btn btn-primary btn-sm btn-done">
-            <a href="{{ route('user.index') }}" class="btn btn-primary btn-sm">戻る</a>
+        <div class="button_set">
+            <input type="submit" name="send" value="ユーザー変更" class="btn_done">
         </div>
     </form>
 </div>

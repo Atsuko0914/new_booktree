@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/user.css') }}" rel="stylesheet">
   <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
@@ -28,12 +29,8 @@
       <a href="{{route('articles.index')}}">みんなの投稿</a>
       <a href="{{route('books.index')}}">Mylibrary</a>
     </nav>
-  <!-- @if(Auth::check())
-    <span class="welcome_name">ようこそ, {{ Auth::user()->name }}さん</span>
-  @endif -->
 
   <!-- dropdown -->
-
 <div class="ml-auto card-text">
   <div class="dropdown">
     <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,7 +38,7 @@
       <span class="welcome_name">ようこそ, {{ Auth::user()->name }}さん</span>
     @endif
     <div class="dropdown-menu dropdown-menu-right">
-      <a class="dropdown-item" href="{{ url('/user/index') }}">
+      <a class="dropdown-item" href="{{ route('user.index') }}">
         マイページ
       </a>
     </div>
