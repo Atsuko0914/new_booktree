@@ -30,14 +30,18 @@
     </form>
 </div>
 
+  
   <div class="container card-columns">
     @foreach($books as $book) 
+      @if(Auth::id() === $book->user_id)
       @include('books.card')
+      @endif
     @endforeach
   </div>
   <div class="d-flex justify-content-center">
     {{ $books->links('vendor.pagination.sample-pagination') }}
   </div>
+  
 
 
 
