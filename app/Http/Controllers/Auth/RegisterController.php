@@ -93,13 +93,13 @@ class RegisterController extends Controller
         // 加工した画像を保存する
         Storage::put('public/image/' . $image_name, $resized_image);
 
-        $data['user_image_path'] = $image_name;
+        
     }
 
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'user_image_path'=> $data['user_image_path'],
+            'user_image_path'=> $image_name,
             'password' => Hash::make($data['password']
         ),
         ]);
