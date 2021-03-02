@@ -11,6 +11,17 @@
 |
 */
 Auth::routes();
+// Googleでログイン
+Route::prefix('login')->name('login.')->group(function () {
+  Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+  Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
+});
+Route::prefix('register')->name('register.')->group(function () {
+  Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+  Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser')->name('{provider}');
+});
+
+
 // ゲストユーザーログイン
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 Route::get('/', 'Auth\LoginController@getLogin')->name('auth.login');
@@ -26,3 +37,4 @@ Route::resource('/books', 'BookController')->except(['auth.login'])->middleware(
 Route::get('/user/index', 'UserController@index')->name('user.index')->middleware('auth');
 Route::get('/user/{authUser}/userEdit', 'UserController@userEdit')->name('user.userEdit')->middleware('auth');
 Route::patch('/user/userEdit', 'UserController@userUpdate')->name('user.userUpdate')->middleware('auth');
+
