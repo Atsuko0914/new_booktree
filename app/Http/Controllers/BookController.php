@@ -22,17 +22,18 @@ class BookController extends Controller
 
     if($my_search != '') {
         if($select_box === 'タイトル') {
-            $books = Book::where('title', 'like', '%'.$my_search.'%')->get();
+            $books = Book::Where('user_id', Auth::id())->where('title', 'like', '%'.$my_search.'%')->orderBy('created_at', 'Desc')->paginate(5);
         } elseif($select_box === '著者') {
-            $books = Book::where('author', 'like', '%'.$my_search.'%')->get();
-        } elseif($select_box === 'キーワード') {
-            $books = Book::where('keyword', 'like', '%'.$my_search.'%')->get();
-        } 
-        } else {
-            $books = Book::orderBy('created_at', 'Desc')->paginate(5);
+            $books = Book::Where('user_id', Auth::id())->where('author', 'like', '%'.$my_search.'%')->orderBy('created_at', 'Desc')->paginate(5);
+        } elseif($select_box === 'キーワード') 
+        {
+            $books = Book::Where('user_id', Auth::id())->where('keyword', 'like', '%'.$my_search.'%')->orderBy('created_at', 'Desc')->paginate(5);
         }
+        } else {
+            $books = Book::Where('user_id', Auth::id())->orderBy('created_at', 'Desc')->paginate(5);
+        }
+    
 
-        $my_book = Book::Where('user_id', Auth::id())->get();
 
     return view('books.index', ['books' => $books]);
  }
