@@ -60,7 +60,7 @@ footer p {
 .new_login h1 {
   color: #202f55;
   text-align: center;
-  padding: 1em 0 0;
+  padding: 1em 0 1em 0;
   font-size: 1.2em;
 }
 form {
