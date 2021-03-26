@@ -22,7 +22,7 @@ class ArticleController extends Controller
         // 一致するものがあるか検索する
         $search = $request->search;
        if ($search != '') {
-         $articles = Article::where('article_body', 'like', '%'.$search.'%')->get();
+         $articles = Article::where('article_body', 'like', '%'.$search.'%')->paginate(5);
        } else {
         $articles = Article::orderBy('created_at', 'Desc')->paginate(5);
        }
@@ -136,7 +136,9 @@ class ArticleController extends Controller
          
  
          // 加工した画像を保存する
-         Storage::put('public/image/' . $image_name, $resized_image);
+         Storage::disk('s3')->put('article_images/' . $image_name, $resized_image, 'public');
+        //  Storage::put('public/image/' . $image_name, $resized_image);
+        $articles->image_path = Storage::disk('s3')->url('article_images/' . $image_name);
  
          return $image_name;
  
