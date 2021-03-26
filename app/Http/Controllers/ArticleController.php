@@ -44,7 +44,28 @@ class ArticleController extends Controller
         if (empty($form['article_image_path'])) {
             $article->article_image_path = null;
         } else {
-            $article->article_image_path = $this->getPicture($request);
+            $posted_image = $request->file('article_image_path');
+ 
+         // 画像をリサイズしてjpgにencodeする
+         // (InterventionImageのImageファサードを使用)
+         $resized_image = Image::make($posted_image)->resize(300,300, function ($constraint) {
+             $constraint->aspectRatio();
+         })->encode('jpg');
+ 
+         // 自動回転を行う(ここでEXIFが削除される)
+         $resized_image->orientate()->save();
+ 
+         // 加工した画像からhashを生成し、ファイル名を設定する
+         $image_hash = md5($resized_image->__toString());
+         $image_name = "{$image_hash}.jpg";
+         
+ 
+         // 加工した画像を保存する
+        Storage::disk('s3')->put('/'.$image_name, $resized_image, 'public');
+        //  Storage::put('public/image/' . $image_name, $resized_image);
+        $article->article_image_path = Storage::disk('s3')->url('/'.$image_name);
+        
+            // $article->article_image_path = $this->getPicture($request);
         }
 
         // フォームから送信されてきたimageを削除
@@ -72,7 +93,28 @@ class ArticleController extends Controller
         if (empty($form['article_image_path'])) {
             $article->article_image_path = null;
         } else {
-            $article->article_image_path = $this->getPicture($request);
+            // $article->article_image_path = $this->getPicture($request);
+            // ファイルを取得する
+         $posted_image = $request->file('article_image_path');
+ 
+         // 画像をリサイズしてjpgにencodeする
+         // (InterventionImageのImageファサードを使用)
+         $resized_image = Image::make($posted_image)->resize(300,300, function ($constraint) {
+             $constraint->aspectRatio();
+         })->encode('jpg');
+ 
+         // 自動回転を行う(ここでEXIFが削除される)
+         $resized_image->orientate()->save();
+ 
+         // 加工した画像からhashを生成し、ファイル名を設定する
+         $image_hash = md5($resized_image->__toString());
+         $image_name = "{$image_hash}.jpg";
+         
+ 
+         // 加工した画像を保存する
+         Storage::disk('s3')->put('/' . $image_name, $resized_image, 'public');
+        //  Storage::put('public/image/' . $image_name, $resized_image);
+        $article->article_image_path = Storage::disk('s3')->url('/' . $image_name);
         }
 
         // フォームから送信されてきたimageを削除
@@ -116,33 +158,34 @@ class ArticleController extends Controller
     }
 
      // 画像アップロードの関数
-     public function getPicture($request)
-     {
-         // ファイルを取得する
-         $posted_image = $request->file('article_image_path');
+    //  public function getPicture($request)
+    //  {
+    //      // ファイルを取得する
+    //      $posted_image = $request->file('article_image_path');
  
-         // 画像をリサイズしてjpgにencodeする
-         // (InterventionImageのImageファサードを使用)
-         $resized_image = Image::make($posted_image)->resize(300,300, function ($constraint) {
-             $constraint->aspectRatio();
-         })->encode('jpg');
+    //      // 画像をリサイズしてjpgにencodeする
+    //      // (InterventionImageのImageファサードを使用)
+    //      $resized_image = Image::make($posted_image)->resize(300,300, function ($constraint) {
+    //          $constraint->aspectRatio();
+    //      })->encode('jpg');
  
-         // 自動回転を行う(ここでEXIFが削除される)
-         $resized_image->orientate()->save();
+    //      // 自動回転を行う(ここでEXIFが削除される)
+    //      $resized_image->orientate()->save();
  
-         // 加工した画像からhashを生成し、ファイル名を設定する
-         $image_hash = md5($resized_image->__toString());
-         $image_name = "{$image_hash}.jpg";
+    //      // 加工した画像からhashを生成し、ファイル名を設定する
+    //      $image_hash = md5($resized_image->__toString());
+    //      $image_name = "{$image_hash}.jpg";
          
  
-         // 加工した画像を保存する
-         Storage::disk('s3')->put('article_images/' . $image_name, $resized_image, 'public');
-        //  Storage::put('public/image/' . $image_name, $resized_image);
-        $articles->image_path = Storage::disk('s3')->url('article_images/' . $image_name);
+    //      // 加工した画像を保存する
+    //      Storage::disk('s3')->put('/test', $image_name, $resized_image, 'public');
+    //     //  Storage::put('public/image/' . $image_name, $resized_image);
+    //     $article->article_image_path = Storage::disk('s3')->url('/test', $image_name);
  
-         return $image_name;
+    //      return $image_name;
+        
  
-     } 
+    //  } 
     
 
 }
