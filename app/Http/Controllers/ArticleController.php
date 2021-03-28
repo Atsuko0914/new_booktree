@@ -63,13 +63,10 @@ class ArticleController extends Controller
          // 加工した画像を保存する
         Storage::disk('s3')->put('/'.$image_name, $resized_image, 'public');
         //  Storage::put('public/image/' . $image_name, $resized_image);
-        $article->article_image_path = Storage::disk('s3')->url('/'.$image_name);
+        $article->article_image_path = Storage::disk('s3')->url($image_name);
         
             // $article->article_image_path = $this->getPicture($request);
         }
-
-        // フォームから送信されてきたimageを削除
-        unset($form['article_image_path']);
 
         // データベースに保存する
         $article->fill($form);
@@ -115,6 +112,7 @@ class ArticleController extends Controller
          Storage::disk('s3')->put('/' . $image_name, $resized_image, 'public');
         //  Storage::put('public/image/' . $image_name, $resized_image);
         $article->article_image_path = Storage::disk('s3')->url('/' . $image_name);
+       
         }
 
         // フォームから送信されてきたimageを削除

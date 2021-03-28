@@ -64,7 +64,7 @@
     </h3>
     <div class="card-text">
     @if($article->article_image_path)
-        <img src="/storage/image/{{$article->article_image_path }}">
+        <img src="{{$article->article_image_path}}">
     @endif
     </div>
   </div>
