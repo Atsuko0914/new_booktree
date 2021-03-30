@@ -112,6 +112,7 @@ class ArticleController extends Controller
          Storage::disk('s3')->put('/' . $image_name, $resized_image, 'public');
         //  Storage::put('public/image/' . $image_name, $resized_image);
         $article->article_image_path = Storage::disk('s3')->url('/' . $image_name);
+        dd($article->article_image_path);
        
         }
 
