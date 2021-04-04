@@ -58,7 +58,7 @@ class ArticleController extends Controller
          // 加工した画像からhashを生成し、ファイル名を設定する
          $image_hash = md5($resized_image->__toString());
          $image_name = "{$image_hash}.jpg";
-         
+         dd($image_name);
  
          // 加工した画像を保存する
         Storage::disk('s3')->put('/'.$image_name, $resized_image, 'public');
