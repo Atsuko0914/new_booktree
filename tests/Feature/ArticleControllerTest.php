@@ -20,21 +20,21 @@ class ArticleControllerTest extends TestCase
             ->assertViewIs('articles.index');
     }
 
-    // public function testGuestCreate()
-    // {
-    //     $response = $this->get(route('articles.create'));
+    public function testGuestCreate()
+    {
+        $response = $this->get(route('articles.create'));
 
-    //     $response->assertRedirect(route('login'));
-    // }    
+        $response->assertRedirect(route('login'));
+    }    
 
-    // public function testAuthCreate()
-    // {
-    //     $user = factory(User::class)->create();
+    public function testAuthCreate()
+    {
+        $user = factory(User::class)->create();
 
-    //     $response = $this->actingAs($user)
-    //         ->get(route('articles.create'));
+        $response = $this->actingAs($user)
+            ->get(route('articles.create'));
 
-    //     $response->assertStatus(200)
-    //         ->assertViewIs('articles.create');
-    // }
+        $response->assertStatus(200)
+            ->assertViewIs('articles.create');
+    }
 }
