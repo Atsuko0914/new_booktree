@@ -15,4 +15,4 @@ use Illuminate\Http\Request;
 Route::get('books','Api\BookController@index');
 Route::get('books/{id}','Api\BookController@edit');
 Route::post('books', 'Api\bookController@store');
-Route::get('books/{id}','Api\BookController@destroy');
+Route::delete('books/{id}','Api\BookController@destroy');
