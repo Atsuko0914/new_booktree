@@ -9,14 +9,26 @@ use App\Book;
 class Bookcontroller extends Controller
 {
     public function index(){
-        $book = Book::all();
-        return $book;
+        $book = Book::get(['id', 'title', 'author', 'purchase_date', 'price', 'publication', 'issue_date', 'keyword', 'summary', 'user_id']);
+        
+        $project =[
+            'status'=>200,
+            'body'=>$book,
+        ];
+        
+        return $project;
     }
 
     public function edit($id)
     {
-        $book = Book::find($id);
-        return $book;
+        $book = Book::find($id, ['title', 'author', 'purchase_date', 'price', 'publication', 'issue_date', 'keyword', 'summary', 'user_id']);
+
+        $project =[
+            'status'=>200,
+            'body'=>$book,
+        ];
+        
+        return $project;
     }
 
     public function store(Request $request)
@@ -26,13 +38,22 @@ class Bookcontroller extends Controller
         $book->author = $request->author;
         $book->user_id = $request->user_id;
         $book->save();
-        return redirect('api/books');
+
+        // $book = Book::get(['title', 'author', 'user_id']);
+
+        return $project =[
+            'status'=>200,
+        ];
+
     }
 
     public function destroy($id)
     {
         $book = Book::find($id);
         $book->delete();
-        return redirect('api/books');
+        
+        return $project =[
+            'status'=>200,
+        ];
     }
 }
