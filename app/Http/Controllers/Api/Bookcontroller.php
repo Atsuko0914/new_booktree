@@ -35,24 +35,13 @@ class Bookcontroller extends Controller
     {   
         $book = new Book;
         
-         if(empty($book->title = $request->title)) {
+         if(empty($book->title = $request->title) || empty($book->user_id = $request->user_id) || empty($book->author = $request->author)) {
 
                 return $project =[
                 'status' => 300,
                 ];
-        } elseif (empty($book->user_id = $request->user_id)) {
+    } else {
 
-                return $project =[
-                'status' => 300,
-                ];
-
-        } elseif (empty($book->author = $request->author)) {
-
-                return $project =[
-                'status' => 300,
-                ];
-        } else {
-            
         $book->title = $request->title;
         $book->author = $request->author;
         $book->user_id = $request->user_id;
