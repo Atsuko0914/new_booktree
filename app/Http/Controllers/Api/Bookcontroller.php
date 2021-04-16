@@ -41,7 +41,7 @@ class Bookcontroller extends Controller
                 return $project =[
                 'status' => 300,
                 ];
-    } elseif (!(Book::Where('user_id', $request->user_id)->exists())) {
+    } elseif (!(User::Where('id', $request->user_id)->exists())) {
 
                 return $project =[
                 'status' => 300,
