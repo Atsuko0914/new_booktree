@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Book;
+use App\User;
 
 class Bookcontroller extends Controller
 {
@@ -36,6 +37,11 @@ class Bookcontroller extends Controller
         $book = new Book;
         
          if(empty($book->title = $request->title) || empty($book->user_id = $request->user_id) || empty($book->author = $request->author)) {
+
+                return $project =[
+                'status' => 300,
+                ];
+    } elseif (!(Book::Where('user_id', $request->user_id)->exists())) {
 
                 return $project =[
                 'status' => 300,
