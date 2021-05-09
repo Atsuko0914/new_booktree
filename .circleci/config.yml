@@ -6,8 +6,8 @@ jobs:
     steps:
      - checkout
       - run: 
-        name: base64 decode env file
-        command: echo $ENV_FILE | base64 -di > .env.testing 
+          name: base64 decode env file
+          command: echo $ENV_FILE | base64 -di > .env.testing 
       - run: sudo composer self-update --1
       - run: composer install -n --prefer-dist
       - run: npm ci
