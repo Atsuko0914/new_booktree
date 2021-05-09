@@ -13,6 +13,8 @@ jobs:
           name: Install php-gd
           command: |
             sudo apt-get -y install libpng-dev
+            sudo docker-php-ext-install  gd
+            sudo docker-php-ext-install  gd exif 
       - run: composer install -n --prefer-dist
       - run: npm ci
       - run: npm run dev
