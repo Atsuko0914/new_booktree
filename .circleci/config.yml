@@ -9,6 +9,11 @@ jobs:
           name: base64 decode env file
           command: echo $ENV_FILE | base64 -di > .env.testing 
       - run: sudo composer self-update --1
+      - run:
+          name: Install php-gd
+          command: |
+            sudo apt-get -y install libpng-dev  
+            sudo docker-php-ext-install  gd 
       - run: composer install -n --prefer-dist
       - run: npm ci
       - run: npm run dev
